@@ -972,4 +972,4 @@ https://github.com/hms5232/firefox-copy-decoded-url
 
 ## Licence
 
-[MIT Licence]https://github.com/akiGAMEBOY/ChromeExt_Quickly-Copy-Decoed-URL/blob/main/LICENSE
+[MIT Licence]https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/LICENSE

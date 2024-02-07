@@ -1,6 +1,6 @@
 # Quickly Copy Decoded URL
 
-![Logo - Quickly Copy Decoded URL]()
+![Logo - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/image/qc-logo.png)
 ここに、ボタンで日本語ページをコピーして、テキストに貼り付けているアニメーション画像 と
 ショートカットキーでコピー＆貼り付けしている画像を掲載する。
 

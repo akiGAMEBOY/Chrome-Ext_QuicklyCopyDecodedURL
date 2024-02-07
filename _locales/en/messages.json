@@ -1,0 +1,35 @@
+{
+  "extName" : {
+    "message": "Quickly Copy Decoded URL"
+  },
+  "extDescription" : {
+    "message": "Decode and copy URLs containing multicode."
+  },
+  "extTitle" : {
+    "message": "Popup - Quickly Copy Decoded URL"
+  },
+  "msg_label_manualcopy": {
+    "message": "Copy the decoded URL using button"
+  },
+  "msg_button_manualcopy": {
+    "message": "Copy decoded URL"
+  },
+  "msg_button_manualcopy_complete": {
+    "message": "Copying completed !"
+  },
+  "msg_label_shortcutscopy": {
+    "message": "Copy the decoded URL using shortcut keys"
+  },
+  "msg_desc_shortcutscopy": {
+    "message": "Press this keys: Ctrl + Shift + 1 (Default)"
+  },
+  "msg_alert_notaccess_clipboard": {
+    "message": "Clipboard access not possible. Does not work in the browser you are using. \n\n * This message can also be closed by pressing the \"Esc\" key."
+  },
+  "msg_alert_shortcutscopy": {
+    "message": "Copied the URL using the shortcut function. \n\n * This message can also be closed by pressing the \"Esc\" key."
+  },
+  "msg_alert_iconclickcopy": {
+    "message": "Copied the URL using the extension icon click function. \n\n * This message can also be closed by pressing the \"Esc\" key."
+  }
+}

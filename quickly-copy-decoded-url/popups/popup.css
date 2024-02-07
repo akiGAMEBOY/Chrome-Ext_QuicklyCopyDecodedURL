@@ -1,0 +1,82 @@
+.qc-popup {
+  align-items: center;
+  width: 340px;
+}
+
+.qc-header { 
+  margin: 1em 0.5em 1em 0.5em;
+}
+
+.qc-header .qc-logo {
+  width: 280px;
+  height: 48px;
+  background-image: url(../images/qc-logo.png);
+  background-position: left;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.qc-content {
+  margin: 1em 0.5em 1em 0.5em;
+  padding: 0em 0em 0.25em 0em;
+}
+
+.manual-copy-widget,
+.shortcuts-copy-widget {
+  margin: 1em 0.5em 1em 0.5em;
+  padding: 1em 0em 1em 0em;
+  font-size: 1.125em;
+  font-weight: 400;
+}
+
+label {
+  display: block;
+  margin: 0em 0em 1.5em 0em;
+  padding: 0.75em 0em 0em 0.5em;
+  max-width: 100%;
+  height: 2.25em;
+  font-weight: 600;
+  color: #50780A;
+  border-left:solid 5px #50780A;
+	background-color:#edf1e6;
+  box-shadow:3px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+button {
+  display: block;
+  width: 220px;
+  height: 40px;
+  font-size: 1.125em;
+  font-weight: 600;
+  margin: auto;
+  color: #ffffff;
+  background-color: #50780A;
+  border: 0px;
+  border-radius: 20px;
+}
+
+button:hover {
+  background-color: #385407;
+}
+
+button:active {
+  color: #50780A;
+  background-color: #ffffff;
+}
+
+.keyboard-layout {
+  font-weight: 650;
+  position: relative;
+  display: inline-block;
+  color: #666;
+  background-image: linear-gradient(#f8f8f8 98%, #aaa);
+  padding: 7px 14px;
+  box-sizing:border-box;
+  margin:0 0.5em;
+  border-radius: 5px;
+  box-shadow:0px 0px  1px 1px rgba(0,0,0,.2) , inset 1px 1px 0 #fff;
+}
+
+.qc-footer {
+  margin: 1em 0.5em 1em 0.5em;
+}

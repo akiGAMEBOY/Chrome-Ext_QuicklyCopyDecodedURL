@@ -1,0 +1,35 @@
+{
+  "extName" : {
+    "message": "Quickly Copy Decoded URL"
+  },
+  "extDescription" : {
+    "message": "マルチコードを含むURLをデコードしてコピーする。"
+  },
+  "extTitle" : {
+    "message": "ポップアップ - Quickly Copy Decoded URL"
+  },
+  "msg_label_manualcopy": {
+    "message": "ボタンでデコードしたURLをコピー"
+  },
+  "msg_button_manualcopy": {
+    "message": "URLをデコードしてコピー"
+  },
+  "msg_button_manualcopy_complete": {
+    "message": "コピーが完了しました！"
+  },
+  "msg_label_shortcutscopy": {
+    "message": "ショートカットキーでデコードしたURLをコピー"
+  },
+  "msg_desc_shortcutscopy": {
+    "message": "入力方法："
+  },
+  "msg_alert_notaccess_clipboard": {
+    "message": "クリップボードへのアクセス不可。使用しているブラウザでは機能しません。\n\n ※ このメッセージは “Escキー” でも閉じることができます。"
+  },
+  "msg_alert_shortcutscopy": {
+    "message": "ショートカット機能でURLをコピーしました。\n\n ※ このメッセージは “Escキー” でも閉じることができます。"
+  },
+  "msg_alert_iconclickcopy": {
+    "message": "拡張機能のアイコンクリック機能でURLをコピーしました。\n\n ※ このメッセージは “Escキー” でも閉じることができます。"
+  }
+}

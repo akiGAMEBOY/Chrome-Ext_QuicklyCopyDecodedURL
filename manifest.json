@@ -1,0 +1,64 @@
+{
+  "name": "__MSG_extName__",
+  "version": "0.0.1",
+  "description": "__MSG_extDescription__",
+  "manifest_version": 3,
+  "default_locale": "ja",
+  "background": {
+    "service_worker": "quickly-copy-decoded-url/js/background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "quickly-copy-decoded-url/js/common.js",
+        "quickly-copy-decoded-url/js/content-script.js"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "clipboardWrite",
+    "tabs",
+    "alarms"
+  ],
+  "action": {
+    "default_title": "__MSG_extTitle__",
+    "default_popup": "quickly-copy-decoded-url/popups/popup.html",
+    "default_icon": {
+      "32": "quickly-copy-decoded-url/icons/32.png",
+      "72": "quickly-copy-decoded-url/icons/72.png",
+      "128": "quickly-copy-decoded-url/icons/128.png",
+      "512": "quickly-copy-decoded-url/icons/512.png"
+    }
+  },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+9",
+        "mac": "MacCtrl+Shift+9"
+      },
+      "description": "View Option."
+    },
+    "shortcuts_copy": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+1",
+        "mac": "Command+Shift+1"
+      },
+      "description": "Decode the URL of the active web page and copy it to the clipboard."
+    },
+    "toggle_switch": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+2",
+        "mac": "Command+Shift+2"
+      },
+      "description": "(Unimplemented) Enables or Disables the Auto-Copy function."
+    }
+  },
+  "icons": {
+    "32": "quickly-copy-decoded-url/icons/32.png",
+    "72": "quickly-copy-decoded-url/icons/72.png",
+    "128": "quickly-copy-decoded-url/icons/128.png",
+    "512": "quickly-copy-decoded-url/icons/512.png"
+  }
+}

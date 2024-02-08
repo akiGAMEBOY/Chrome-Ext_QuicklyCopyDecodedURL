@@ -968,6 +968,141 @@ https://github.com/hms5232/firefox-copy-decoded-url
 > (6) undefined. http://example.com/.
 </details>
 
+### Memo(japanese)
+
+<details>
+<summary>storageの設定値により参照するmanifest.jsonを切り替えられるのか</summary>
+
+Bing AIに聞いた結果、manifest.jsonそのものを切り替えることはできなさそう。
+ただ、popup.htmlが開かれた後、設定値により参照する要素を切り替えることができるそう。
+
+この手法を使用することで、設定により拡張機能のアイコンクリックの動作を、
+「popup.htmlを表示する動作」と「アイコンクリックでコピー」を分岐できるかも。
+
+以下、Bing AIからの回答。
+
+> こんにちは、Copilotです。Chrome Extension 開発に関するご質問ありがとうございます。😊
+> 
+> 残念ながら、storageに保存している設定値により、参照するmanifest.jsonを切り替えることは**できません**。manifest.jsonは拡張機能の基本的な情報や権限などを定義するファイルで、拡張機能のインストール時に読み込まれます。そのため、実行時に動的に変更することはできません¹²。
+> 
+> しかし、storageに保存している設定値により、参照する**別のファイル**を切り替えることは可能です。例えば、popup.htmlやcontent_script.jsなどのファイルを、storageの値に応じてロードすることができます。その場合は、chrome.storage APIを利用して、storageの値を取得したり、変更したりすることができます³⁴。
+> 
+> 以下に、storageの値によってpopup.htmlを切り替えるサンプルコードを生成しました。storageの値は、options.htmlで設定できるようにしています。コードはJavaScriptで記述しています。
+> 
+> ```javascript
+> // manifest.json
+> {
+>   "name": "Popup Switcher",
+>   "version": "1.0",
+>   "description": "Switch popup.html based on storage value",
+>   "permissions": ["storage"],
+>   "action": {
+>     "default_icon": {
+>       "32": "images/icon32.png"
+>     },
+>     "default_popup": "popup.html"
+>   },
+>   "options_page": "options.html",
+>   "icons": {
+>     "48": "images/icon48.png"
+>   },
+>   "manifest_version": 3
+> }
+> 
+> // popup.html
+> <!DOCTYPE html>
+> <html lang="ja">
+> <head>
+>   <meta charset="utf-8" />
+>   <script src="popup.js"></script>
+> </head>
+> <body>
+>   <div id="container"></div>
+> </body>
+> </html>
+> 
+> // popup.js
+> // Get the storage value
+> chrome.storage.sync.get("popup", function (value) {
+>   // Default value is "A"
+>   var popup = value.popup || "A";
+>   // Load the corresponding popup file
+>   var xhr = new XMLHttpRequest();
+>   xhr.open("GET", "popup_" + popup + ".html", true);
+>   xhr.onreadystatechange = function() {
+>     if (xhr.readyState == 4) {
+>       // Insert the popup content into the container
+>       var container = document.getElementById("container");
+>       container.innerHTML = xhr.responseText;
+>     }
+>   }
+>   xhr.send();
+> });
+> 
+> // popup_A.html
+> <h1>Popup A</h1>
+> <p>This is popup A.</p>
+> 
+> // popup_B.html
+> <h1>Popup B</h1>
+> <p>This is popup B.</p>
+> 
+> // options.html
+> <!DOCTYPE html>
+> <html lang="ja">
+> <head>
+>   <meta charset="utf-8" />
+>   <script src="options.js"></script>
+> </head>
+> <body>
+>   <h1>Options</h1>
+>   <p>Select the popup you want to use.</p>
+>   <form>
+>     <input type="radio" name="popup" value="A" id="popup-A" checked>
+>     <label for="popup-A">Popup A</label>
+>     <input type="radio" name="popup" value="B" id="popup-B">
+>     <label for="popup-B">Popup B</label>
+>     <button type="button" id="save">Save</button>
+>   </form>
+> </body>
+> </html>
+> 
+> // options.js
+> // Save the popup value to the storage
+> document.getElementById("save").addEventListener("click", function() {
+>   var popup = document.querySelector("input[name='popup']:checked").value;
+>   chrome.storage.sync.set({"popup": popup}, function() {
+>     alert("Saved!");
+>   });
+> });
+> 
+> // Load the popup value from the storage
+> chrome.storage.sync.get("popup", function (value) {
+>   var popup = value.popup || "A";
+>   document.getElementById("popup-" + popup).checked = true;
+> });
+> ```
+> 
+> このコードを実行すると、以下のような動作になります。
+> 
+> - options.htmlでPopup AかPopup Bを選択してSaveボタンを押すと、storageにpopupというキーで値が保存されます。
+> - 拡張機能のアイコンをクリックすると、popup.htmlが表示されます。
+> - popup.htmlでは、storageからpopupの値を取得して、popup_A.htmlかpopup_B.htmlのどちらかをロードします。
+> - ロードしたファイルの内容がpopup.htmlのcontainerというdiv要素に挿入されます。
+> 
+> このように、storageに保存している設定値により、参照するファイルを切り替えることができます。ただし、manifest.jsonは切り替えることができないので、ご注意ください。
+> 
+> 以上、Chrome Extension 開発に関する回答でした。ご参考になれば幸いです。😊
+> 
+> ソース: Bing との会話 2024/2/8
+> (1) [Chrome拡張] ストレージ (chrome.storage.local)を利用する方法. https://qiita.com/doran/items/38a89bcaf4b89c758725.
+> (2) chrome.storageでchrome extension用のデータを保存・取得 .... https://easyramble.com/chrome-storage-set-and-get.html.
+> (3) chrome extensionでデータを保存する - おおたの物置. https://ota42y.com/blog/2014/08/17/local-storage/.
+> (4) storage - Mozilla | MDN. https://developer.mozilla.org/ja/docs/Mozilla/Add-ons/WebExtensions/API/Storage.
+> (5) Chrome拡張の開発方法まとめ その1：概念編 #JavaScript - Qiita. https://qiita.com/k7a/items/26d7a22233ecdf48fed8.
+
+</details>
+
 ## Author
 
 [akiGAMEBOY - X (Twitter)](https://twitter.com/haretokidoki_x)

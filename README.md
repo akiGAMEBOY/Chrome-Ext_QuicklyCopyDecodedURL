@@ -114,7 +114,7 @@ As of February 2024, Only software that has been confirmed to work is listed.
             "512": "icons/512.png"
             }
         },
-        +  "options_page": "/options/options.html", ← 追加
+        +  "options_page": "/options/options.html", <- Add
         "commands": {
             "_execute_action": {
             "suggested_key": {

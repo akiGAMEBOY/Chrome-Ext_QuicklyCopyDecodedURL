@@ -26,11 +26,11 @@ As of February 2024, Only software that has been confirmed to work is listed.
 
 ### Button using Copy
 
-![Animation image: Button using Copy - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/copy-manual.png)
+![Animation image: Button using Copy - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/copy-manual.gif)
 
 ### Shortcuts using Copy
 
-![Animation image: Shortcuts using Copy - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/copy-shortcuts.png)
+![Animation image: Shortcuts using Copy - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/copy-shortcuts.gif)
 
 
 ## Description

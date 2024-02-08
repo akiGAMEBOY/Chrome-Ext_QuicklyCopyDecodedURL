@@ -1,6 +1,6 @@
 # Quickly Copy Decoded URL
 
-![Logo - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/qc-logo.png)
+<img alt="Logo - Quickly Copy Decoded URL" src="https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/qc-logo.png" width="800">
 
 ## Overview
 

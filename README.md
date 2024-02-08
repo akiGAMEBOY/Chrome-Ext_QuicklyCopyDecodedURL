@@ -52,7 +52,7 @@ As of February 2024, Only software that has been confirmed to work is listed.
     If copying does not work, please reload the web page you want to copy and try again. 
 
 - Shortcuts lists (Default)
-    - Ctrl + Shift + 9: Show extension popup (what happens when you click the extension icon).
+    - Ctrl + Shift + 9: Show extension popup.
     - Ctrl + Shift + 1: Decode and copy the active tab URL.
 
 <details>

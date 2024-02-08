@@ -1,10 +1,6 @@
 # Quickly Copy Decoded URL
 
-![Logo - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/image/qc-logo.png)
-ここに、ボタンで日本語ページをコピーして、テキストに貼り付けているアニメーション画像 と
-ショートカットキーでコピー＆貼り付けしている画像を掲載する。
-
-ドットで表現？
+![Logo - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/qc-logo.png)
 
 ## Overview
 
@@ -15,23 +11,27 @@ URL encoding refers to a conversion such as "`https://www.google.com/search?q=%E
 
 ## Requirement
 
+As of February 2024, Only software that has been confirmed to work is listed.
+
 - OS
     - Windows OS
-- Browser (Operation confirmed)
+        `Windows 10 Pro: Version 22H2 (OS Bulid 19045.3930)`
+- Browser
     - Google Chrome
-        `121.0.6167.140 (Official Build) （64 ビット） (cohort: Stable)`
+        `121.0.6167.140 (Official Build) (64 bit) (cohort: Stable)`
     - Microsoft Edge
-        `121.0.2277.106 (公式ビルド) (64 ビット)`
+        `121.0.2277.106 (Offical Build) (64 bit)`
 
 ## Usage
 
 ### Button using Copy
 
-![Animation image: Button using Copy - Quickly Copy Decoded URL]()
+![Animation image: Button using Copy - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/copy-manual.png)
 
 ### Shortcuts using Copy
 
-![Animation image: Shortcuts using Copy - Quickly Copy Decoded URL]()
+![Animation image: Shortcuts using Copy - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/copy-shortcuts.png)
+
 
 ## Description
 
@@ -970,6 +970,8 @@ https://github.com/hms5232/firefox-copy-decoded-url
 
 ## Author
 
+[akiGAMEBOY - X (Twitter)](https://twitter.com/haretokidoki_x)
+
 ## Licence
 
-[MIT Licence]https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/LICENSE
+[MIT Licence](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/LICENSE)

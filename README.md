@@ -165,7 +165,7 @@ https://developer.chrome.com/docs/extensions?hl=ja
 
 https://github.com/GoogleChrome/chrome-extensions-samples/tree/main/api-samples/action
 
-### How to access the clipboard in Chrome extension  development
+### How to access the clipboard in Chrome extension development
 
 https://zenn.dev/k41531/articles/3ce99a991b3098
 

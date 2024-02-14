@@ -19,8 +19,7 @@
   "permissions": [
     "storage",
     "clipboardWrite",
-    "tabs",
-    "alarms"
+    "tabs"
   ],
   "action": {
     "default_title": "__MSG_extTitle__",

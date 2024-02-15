@@ -32,7 +32,6 @@ As of February 2024, Only software that has been confirmed to work is listed.
 
 ![Animation image: Shortcuts using Copy - Quickly Copy Decoded URL](https://github.com/akiGAMEBOY/Chrome-Ext_QuicklyCopyDecodedURL/blob/main/quickly-copy-decoded-url/images/copy-shortcuts.gif)
 
-
 ## Description
 
 - Button using Copy
@@ -473,169 +472,169 @@ https://github.com/hms5232/firefox-copy-decoded-url
 <details>
 <summary>backgroud と content-script を組わせてショートカットキーで拡張機能を実行する方法</summary>
 
->こんにちは、これはBingです。Chrome拡張機能の開発に興味があるのですね。😊
->
+> こんにちは、これはBingです。Chrome拡張機能の開発に興味があるのですね。😊
+> 
 > Chrome拡張機能のmanifest_versionの「3」でbackgroundのservice_workerとcontent_scriptsを使いショートカットキーでクリップボードにコピーするソースコードを作成するには、以下の手順を参考にしてください。
->
->- manifest.jsonファイルを作成し、必要な設定を記述します。¹²³⁴⁵
->    - manifest_versionを3に設定します。
->    - name, version, description, iconsなどの基本情報を設定します。
->    - actionにdefault_iconとdefault_popupを設定します。default_iconは拡張機能のアイコンを、default_popupはアイコンをクリックしたときに表示されるポップアップのHTMLファイルを指定します。
->    - backgroundにservice_workerを設定します。service_workerはバックグラウンドで実行されるJavaScriptファイルを指定します。manifest_versionが3の場合、service_workerは1つのファイルだけ指定できます。
->    - content_scriptsにmatches, js, cssを設定します。matchesはコンテンツスクリプトが挿入されるページのパターンを、jsとcssは挿入されるJavaScriptファイルとCSSファイルを指定します。
->    - commandsにinject-scriptを設定します。inject-scriptはショートカットキーで実行されるコマンドを指定します。suggested_keyにはショートカットキーの組み合わせを、descriptionにはコマンドの説明を指定します。
->    - permissionsにclipboardWrite, activeTab, scriptingを設定します。clipboardWriteはクリップボードに書き込む権限を、activeTabはアクティブなタブにアクセスする権限を、scriptingはタブにスクリプトを注入する権限を指定します。
->    - host_permissionsに<all_urls>を設定します。<all_urls>は拡張機能がアクセスできるすべてのURLを指定します。
->- popup.htmlファイルを作成し、ポップアップの内容を記述します。¹²³⁴⁵
->    - HTMLの基本構造を記述します。
->    - headタグにmetaタグとtitleタグを記述します。metaタグは文字コードをUTF-8に設定します。titleタグはポップアップのタイトルを設定します。
->    - headタグにlinkタグを記述します。linkタグはポップアップのスタイルを指定するCSSファイルを読み込みます。
->    - bodyタグにh1タグとpタグを記述します。h1タグは拡張機能の名前を、pタグはショートカットキーの使い方を記述します。
->- popup.cssファイルを作成し、ポップアップのスタイルを記述します。¹²³⁴⁵
->    - bodyタグにフォントファミリーとマージンを設定します。
->    - h1タグに色を設定します。
->    - pタグにフォントサイズを設定します。
->- background.jsファイルを作成し、バックグラウンドで実行されるスクリプトを記述します。¹²³⁴⁵
->    - chrome.commands.onCommand.addListenerを使ってコマンドが実行されたときのイベントリスナーを登録します。コマンドの名前を引数に取ります。
->    - chrome.tabs.queryを使ってアクティブなタブと現在のウィンドウに一致するタブを取得します。コールバック関数にタブの配列を引数に取ります。
->    - 配列の最初の要素をアクティブなタブとして変数に代入します。
->    - アクティブなタブのタイトルとURLを変数に代入します。
->    - タイトルとURLをMarkdown形式で結合した文字列を変数に代入します。
->    - chrome.tabs.sendMessageを使ってアクティブなタブにメッセージを送ります。タブのIDとメッセージのオブジェクトを引数に取ります。メッセージのオブジェクトにはコマンドと文字列をプロパティに持たせます。
->    - promiseをキャッチしてエラーを処理します。
->- content-script.jsファイルを作成し、コンテンツスクリプトとして実行されるスクリプトを記述します。¹²³⁴⁵
->    - chrome.runtime.onMessage.addListenerを使ってバックグラウンドスクリプトからメッセージを受け取るイベントリスナーを登録します。メッセージのオブジェクトを引数に取ります。
->    - メッセージのオブジェクトから文字列を取り出します。
->    - document.createElementを使ってテキストエリアを作成します。テキストエリアのvalueに文字列を設定します。document.body.appendChildを使ってテキストエリアをドキュメントに追加します。
->    - textArea.selectを使ってテキストエリアを選択します。document.execCommandを使ってクリップボードにコピーします。
->    - document.body.removeChildを使ってテキストエリアをドキュメントから削除します。
->    - alertを使ってコピーしたことを通知します。
->
->これらのファイルを適切なフォルダに保存して、Chromeの拡張機能管理画面から読み込むと、拡張機能が動作するはずです。¹²³⁴⁵
->
->もし、Chrome拡張機能の開発に関する他の質問があれば、お気軽にお尋ねください。😊
->
->以下は、各ファイルのコードの例です。
->
->```html
-><!-- popup.html -->
-><!DOCTYPE html>
-><html>
-><head>
->  <meta charset="UTF-8">
->  <title>TitleURL Copier</title>
->  <link rel="stylesheet" href="popup.css">
-></head>
-><body>
->  <h1>TitleURL Copier</h1>
->  <p>Press Ctrl+Shift+Y (or Command+Shift+Y on Mac) to copy the title and URL of the current page to the clipboard in Markdown format.</p>
-></body>
-></html>
->```
->
->```css
->/* popup.css */
->body {
->  font-family: Arial, sans-serif;
->  margin: 10px;
->}
->
->h1 {
->  color: #3c78d8;
->}
->
->p {
->  font-size: 14px;
->}
->```
->
->```javascript
->// background.js
->chrome.commands.onCommand.addListener(function(command) {
->  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
->    var activeTab = tabs [0];
->    var title = activeTab.title;
->    var url = activeTab.url;
->    var result = '[' + title + '](' + url + ')';
->    // Send a message to the content script
->    (async () => {
->      chrome.tabs.sendMessage(activeTab.id, {command: "copy", text: result})
->      // Catch any error
->      .catch(error => {
->        console.error(error);
->      });
->    })();
->  });
->});
->
->// content-script.js
->// Listen for messages from the background script
->chrome.runtime.onMessage.addListener(function(request) {
->  // Create a textarea with the text to copy
->  const textArea = document.createElement('textarea');
->  textArea.value = request.text;
->  document.body.appendChild(textArea);
->  // Select the textarea and copy to the clipboard
->  textArea.select();
->  document.execCommand('copy');
->  // Remove the textarea
->  document.body.removeChild(textArea);
->  alert('Copied the title and URL of the current page to the clipboard');
->});
->```
->
->```json
->// manifest.json
->{
->  "name": "TitleURL Copier",
->  "version": "1.0",
->  "manifest_version": 3,
->  "description": "Copies the URL and title of the current page to the clipboard in a specified format",
->  "icons": {
->    "16": "icon16.png",
->    "48": "icon48.png",
->    "128": "icon128.png"
->  },
->  "action": {
->    "default_icon": "popup16.png",
->    "default_popup": "popup.html"
->  },
->  "background": {
->    "service_worker": "background.js"
->  },
->  "content_scripts": [
->    {
->      "matches": ["<all_urls>"],
->      "js": ["content-script.js"]
->    }
->  ],
->  "commands": {
->    "inject-script": {
->      "suggested_key": {
->        "default": "Ctrl+Shift+Y",
->        "mac": "Command+Shift+Y"
->      },
->      "description": "Inject a script on the page"
->    }
->  },
->  "permissions": ["clipboardWrite","activeTab","scripting"],
->  "host_permissions": ["<all_urls>"]
->}
->```
->
->これらのコードを適切なフォルダに保存して、Chromeの拡張機能管理画面から読み込むと、拡張機能が動作するはずです。¹²³⁴⁵
->
->もし、Chrome拡張機能の開発に関する他の質問があれば、お気軽にお尋ねください。😊
->
->ソース: Bing との会話 2024/1/24
->(1) Chrome拡張機能 manifest.json Ver.3の書き方 #JavaScript - Qiita. https://qiita.com/shiro1212/items/12f0a767494a7b2ab0b3.
->(2) 自分の作ったChrome拡張をManifest Version 3に対応させる - Zenn. https://zenn.dev/satoshie/articles/aa62f01faddd84.
->(3) Chrome拡張機能を「Manifest V3」に対応する手順 | ソフトアンテナ. https://softantenna.com/blog/chrome-extension-manifest-v3/.
->(4) Chrome拡張機能のmanifestファイルをversion2からversion3へ .... https://blog.holyblue.jp/entry/2021/05/03/105010.
->(5) Chrome拡張機能の概要から公開まで(ManifestV3対応) ~概要編 .... https://zenn.dev/kumomomo/articles/c4b5b363cab8f0.
->(6) undefined. https://xxxxxxx.com/.
->(7) undefined. https://developer.chrome.com/extensions/declare_permissions.
->(8) undefined. https://developer.chrome.com/blog/mv2-transition/.
+> 
+> - manifest.jsonファイルを作成し、必要な設定を記述します。¹²³⁴⁵
+>     - manifest_versionを3に設定します。
+>     - name, version, description, iconsなどの基本情報を設定します。
+>     - actionにdefault_iconとdefault_popupを設定します。default_iconは拡張機能のアイコンを、default_popupはアイコンをクリックしたときに表示されるポップアップのHTMLファイルを指定します。
+>     - backgroundにservice_workerを設定します。service_workerはバックグラウンドで実行されるJavaScriptファイルを指定します。manifest_versionが3の場合、service_workerは1つのファイルだけ指定できます。
+>     - content_scriptsにmatches, js, cssを設定します。matchesはコンテンツスクリプトが挿入されるページのパターンを、jsとcssは挿入されるJavaScriptファイルとCSSファイルを指定します。
+>     - commandsにinject-scriptを設定します。inject-scriptはショートカットキーで実行されるコマンドを指定します。suggested_keyにはショートカットキーの組み合わせを、descriptionにはコマンドの説明を指定します。
+>     - permissionsにclipboardWrite, activeTab, scriptingを設定します。clipboardWriteはクリップボードに書き込む権限を、activeTabはアクティブなタブにアクセスする権限を、scriptingはタブにスクリプトを注入する権限を指定します。
+>     - host_permissionsに<all_urls>を設定します。<all_urls>は拡張機能がアクセスできるすべてのURLを指定します。
+> - popup.htmlファイルを作成し、ポップアップの内容を記述します。¹²³⁴⁵
+>     - HTMLの基本構造を記述します。
+>     - headタグにmetaタグとtitleタグを記述します。metaタグは文字コードをUTF-8に設定します。titleタグはポップアップのタイトルを設定します。
+>     - headタグにlinkタグを記述します。linkタグはポップアップのスタイルを指定するCSSファイルを読み込みます。
+>     - bodyタグにh1タグとpタグを記述します。h1タグは拡張機能の名前を、pタグはショートカットキーの使い方を記述します。
+> - popup.cssファイルを作成し、ポップアップのスタイルを記述します。¹²³⁴⁵
+>     - bodyタグにフォントファミリーとマージンを設定します。
+>     - h1タグに色を設定します。
+>     - pタグにフォントサイズを設定します。
+> - background.jsファイルを作成し、バックグラウンドで実行されるスクリプトを記述します。¹²³⁴⁵
+>     - chrome.commands.onCommand.addListenerを使ってコマンドが実行されたときのイベントリスナーを登録します。コマンドの名前を引数に取ります。
+>     - chrome.tabs.queryを使ってアクティブなタブと現在のウィンドウに一致するタブを取得します。コールバック関数にタブの配列を引数に取ります。
+>     - 配列の最初の要素をアクティブなタブとして変数に代入します。
+>     - アクティブなタブのタイトルとURLを変数に代入します。
+>     - タイトルとURLをMarkdown形式で結合した文字列を変数に代入します。
+>     - chrome.tabs.sendMessageを使ってアクティブなタブにメッセージを送ります。タブのIDとメッセージのオブジェクトを引数に取ります。メッセージのオブジェクトにはコマンドと文字列をプロパティに持たせます。
+>     - promiseをキャッチしてエラーを処理します。
+> - content-script.jsファイルを作成し、コンテンツスクリプトとして実行されるスクリプトを記述します。¹²³⁴⁵
+>     - chrome.runtime.onMessage.addListenerを使ってバックグラウンドスクリプトからメッセージを受け取るイベントリスナーを登録します。メッセージのオブジェクトを引数に取ります。
+>     - メッセージのオブジェクトから文字列を取り出します。
+>     - document.createElementを使ってテキストエリアを作成します。テキストエリアのvalueに文字列を設定します。document.body.appendChildを使ってテキストエリアをドキュメントに追加します。
+>     - textArea.selectを使ってテキストエリアを選択します。document.execCommandを使ってクリップボードにコピーします。
+>     - document.body.removeChildを使ってテキストエリアをドキュメントから削除します。
+>     - alertを使ってコピーしたことを通知します。
+> 
+> これらのファイルを適切なフォルダに保存して、Chromeの拡張機能管理画面から読み込むと、拡張機能が動作するはずです。¹²³⁴⁵
+> 
+> もし、Chrome拡張機能の開発に関する他の質問があれば、お気軽にお尋ねください。😊
+> 
+> 以下は、各ファイルのコードの例です。
+> 
+> ```html
+> <!-- popup.html -->
+> <!DOCTYPE html>
+> <html>
+> <head>
+>   <meta charset="UTF-8">
+>   <title>TitleURL Copier</title>
+>   <link rel="stylesheet" href="popup.css">
+> </head>
+> <body>
+>   <h1>TitleURL Copier</h1>
+>   <p>Press Ctrl+Shift+Y (or Command+Shift+Y on Mac) to copy the title and URL of the current page to the clipboard in Markdown format.</p>
+> </body>
+> </html>
+> ```
+> 
+> ```css
+> /* popup.css */
+> body {
+>   font-family: Arial, sans-serif;
+>   margin: 10px;
+> }
+> 
+> h1 {
+>   color: #3c78d8;
+> }
+> 
+> p {
+>   font-size: 14px;
+> }
+> ```
+> 
+> ```javascript
+> // background.js
+> chrome.commands.onCommand.addListener(function(command) {
+>   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+>     var activeTab = tabs [0];
+>     var title = activeTab.title;
+>     var url = activeTab.url;
+>     var result = '[' + title + '](' + url + ')';
+>     // Send a message to the content script
+>     (async () => {
+>       chrome.tabs.sendMessage(activeTab.id, {command: "copy", text: result})
+>       // Catch any error
+>       .catch(error => {
+>         console.error(error);
+>       });
+>     })();
+>   });
+> });
+> 
+> // content-script.js
+> // Listen for messages from the background script
+> chrome.runtime.onMessage.addListener(function(request) {
+>   // Create a textarea with the text to copy
+>   const textArea = document.createElement('textarea');
+>   textArea.value = request.text;
+>   document.body.appendChild(textArea);
+>   // Select the textarea and copy to the clipboard
+>   textArea.select();
+>   document.execCommand('copy');
+>   // Remove the textarea
+>   document.body.removeChild(textArea);
+>   alert('Copied the title and URL of the current page to the clipboard');
+> });
+> ```
+> 
+> ```json
+> // manifest.json
+> {
+>   "name": "TitleURL Copier",
+>   "version": "1.0",
+>   "manifest_version": 3,
+>   "description": "Copies the URL and title of the current page to the clipboard in a specified format",
+>   "icons": {
+>     "16": "icon16.png",
+>     "48": "icon48.png",
+>     "128": "icon128.png"
+>   },
+>   "action": {
+>     "default_icon": "popup16.png",
+>     "default_popup": "popup.html"
+>   },
+>   "background": {
+>     "service_worker": "background.js"
+>   },
+>   "content_scripts": [
+>     {
+>       "matches": ["<all_urls>"],
+>       "js": ["content-script.js"]
+>     }
+>   ],
+>   "commands": {
+>     "inject-script": {
+>       "suggested_key": {
+>         "default": "Ctrl+Shift+Y",
+>         "mac": "Command+Shift+Y"
+>       },
+>       "description": "Inject a script on the page"
+>     }
+>   },
+>   "permissions": ["clipboardWrite","activeTab","scripting"],
+>   "host_permissions": ["<all_urls>"]
+> }
+> ```
+> 
+> これらのコードを適切なフォルダに保存して、Chromeの拡張機能管理画面から読み込むと、拡張機能が動作するはずです。¹²³⁴⁵
+> 
+> もし、Chrome拡張機能の開発に関する他の質問があれば、お気軽にお尋ねください。😊
+> 
+> ソース: Bing との会話 2024/1/24
+> (1) Chrome拡張機能 manifest.json Ver.3の書き方 #JavaScript - Qiita. https://qiita.com/shiro1212/items/12f0a767494a7b2ab0b3.
+> (2) 自分の作ったChrome拡張をManifest Version 3に対応させる - Zenn. https://zenn.dev/satoshie/articles/aa62f01faddd84.
+> (3) Chrome拡張機能を「Manifest V3」に対応する手順 | ソフトアンテナ. https://softantenna.com/blog/chrome-extension-manifest-v3/.
+> (4) Chrome拡張機能のmanifestファイルをversion2からversion3へ .... https://blog.holyblue.jp/entry/2021/05/03/105010.
+> (5) Chrome拡張機能の概要から公開まで(ManifestV3対応) ~概要編 .... https://zenn.dev/kumomomo/articles/c4b5b363cab8f0.
+> (6) undefined. https://xxxxxxx.com/.
+> (7) undefined. https://developer.chrome.com/extensions/declare_permissions.
+> (8) undefined. https://developer.chrome.com/blog/mv2-transition/.
 
 </details>
 
@@ -658,6 +657,7 @@ https://github.com/hms5232/firefox-copy-decoded-url
 > あなたの要件に基づいて、以下のコードを提供します。コードはmanifest.json, background.js, popup.html, popup.jsの4つのファイルに分けられています。コードは参考文献¹²³⁴を参考にしています。
 > 
 > manifest.json
+> 
 > ```json
 > {
 >   "manifest_version": 3,
@@ -688,6 +688,7 @@ https://github.com/hms5232/firefox-copy-decoded-url
 > ```
 > 
 > background.js
+> 
 > ```js
 > // Listen for clipboard changes
 > chrome.clipboard.onClipboardDataChanged.addListener(() => {
@@ -710,6 +711,7 @@ https://github.com/hms5232/firefox-copy-decoded-url
 > ```
 > 
 > popup.html
+> 
 > ```html
 > <html>
 > <head>
@@ -747,6 +749,7 @@ https://github.com/hms5232/firefox-copy-decoded-url
 > ```
 > 
 > popup.js
+> 
 > ```js
 > // Get the DOM elements
 > let enabled = document.getElementById("enabled");
